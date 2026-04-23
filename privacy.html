@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Debriefed — privacy policy</title>
+<meta name="description" content="Privacy policy for Debriefed.">
+<link rel="icon" href="icon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&family=Manrope:wght@500;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #000000;
+    --bg-warm: #0E0A05;
+    --text: #F0EDE5;
+    --muted: #8A847A;
+    --amber: #FFB627;
+    --rule: rgba(240, 237, 229, 0.12);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background: radial-gradient(ellipse at 50% -5%, var(--bg-warm) 0%, var(--bg) 60%);
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 64px 28px 96px;
+  }
+
+  .wordmark {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 1;
+    letter-spacing: -2px;
+    margin: 0 0 8px;
+    color: var(--text);
+  }
+
+  .subtitle {
+    color: var(--muted);
+    margin: 0 0 48px;
+    font-size: 15px;
+  }
+
+  h2 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 40px 0 16px;
+  }
+
+  p {
+    margin: 0 0 16px;
+    color: var(--text);
+  }
+
+  ul {
+    padding-left: 20px;
+    margin: 0 0 16px;
+  }
+
+  ul li {
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+
+  a {
+    color: var(--amber);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+
+  a:hover { border-bottom-color: var(--amber); }
+
+  .back {
+    display: inline-block;
+    margin-bottom: 32px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  footer {
+    margin-top: 72px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+</style>
+</head>
+<body>
+  <main class="container">
+    <a class="back" href="index.html">← back to support</a>
+
+    <h1 class="wordmark">debriefed</h1>
+    <p class="subtitle">Privacy policy · last updated 22 April 2026</p>
+
+    <p><strong>Debriefed collects nothing.</strong></p>
+    <p>This is a deliberately short policy because there is very little to describe. Debriefed is a single-purpose video scrubbing tool that runs entirely on your device. It has no accounts, no servers, no analytics, and no tracking of any kind.</p>
+
+    <h2>What Debriefed accesses on your device</h2>
+    <ul>
+      <li><strong>Photos library — read:</strong> requested the first time you pick a video, so iOS can show you the video picker. The picked video is played back locally; nothing about it is transmitted anywhere.</li>
+      <li><strong>Photos library — add-only:</strong> requested the first time you tap the camera icon to save a frame. Debriefed writes the frame JPEG into your Photos library and accesses nothing else there.</li>
+    </ul>
+    <p>These are the only permissions Debriefed ever requests. Both are iOS-native permission prompts; Debriefed cannot bypass them and never receives raw access beyond what you grant.</p>
+
+    <h2>What Debriefed does <em>not</em> do</h2>
+    <ul>
+      <li>Debriefed does not create an account. There is no sign-in, no user identifier.</li>
+      <li>Debriefed does not connect to the internet during normal use. The app operates fully offline.</li>
+      <li>Debriefed does not include third-party SDKs for analytics, crash reporting, advertising, or tracking.</li>
+      <li>Debriefed does not read, share, upload, or transmit the videos you scrub.</li>
+      <li>Debriefed does not collect device identifiers, location, contacts, calendar, health data, or any other category of personal information.</li>
+    </ul>
+
+    <h2>Children</h2>
+    <p>Debriefed is rated 4+ and contains no content that would be inappropriate for children. It does not knowingly collect any information from anyone, including children under 13.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>If this policy ever changes — for example if a future feature does require some form of data handling — the change will be documented here with the date updated, and a new version of the app will request any additional permissions needed.</p>
+
+    <h2>Contact</h2>
+    <p>Questions or concerns: <a href="mailto:david.haygarth@gmail.com">david.haygarth@gmail.com</a>.</p>
+
+    <footer>
+      <span>Debriefed · v1.0</span>
+      <span>© 2026 David Haygarth</span>
+    </footer>
+  </main>
+</body>
+</html>
