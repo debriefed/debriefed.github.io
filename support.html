@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Debriefed — user manual</title>
+<meta name="description" content="User manual for Debriefed, the variable-speed video scrubber for iPhone.">
+<link rel="icon" href="icon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&family=Manrope:wght@500;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #000000;
+    --bg-warm: #0E0A05;
+    --text: #F0EDE5;
+    --muted: #8A847A;
+    --amber: #FFB627;
+    --red: #FF4757;
+    --green: #2ED573;
+    --blue: #3B9BFF;
+    --rule: rgba(240, 237, 229, 0.12);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background:
+      radial-gradient(ellipse at 50% -5%, var(--bg-warm) 0%, var(--bg) 60%);
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 64px 28px 96px;
+  }
+
+  header {
+    margin-bottom: 64px;
+  }
+
+  .wordmark {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 72px;
+    line-height: 1;
+    letter-spacing: -3px;
+    margin: 0 0 20px;
+    color: var(--text);
+  }
+
+  .tachometer {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 8px 0 28px;
+  }
+
+  .tick-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 12px;
+    position: relative;
+  }
+
+  .tick {
+    width: 1.5px;
+    height: 6px;
+    background: rgba(240, 237, 229, 0.22);
+    border-radius: 1px;
+  }
+
+  .tick.major { height: 10px; }
+  .tick.r.major { background: var(--red); }
+  .tick.g.major { background: var(--green); }
+  .tick.b.major { background: var(--blue); }
+
+  .tagline {
+    font-size: 22px;
+    line-height: 1.3;
+    font-weight: 500;
+    color: var(--text);
+    margin: 0;
+    letter-spacing: -0.3px;
+  }
+
+  .tagline .climax {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.8px;
+  }
+
+  .toc {
+    margin: 0 0 56px;
+    padding: 18px 22px;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    background: rgba(240, 237, 229, 0.02);
+  }
+
+  .toc-title {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 10px;
+  }
+
+  .toc ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    columns: 2;
+    column-gap: 24px;
+  }
+
+  .toc ol li {
+    margin: 0 0 6px;
+    font-size: 14px;
+    color: var(--text);
+    break-inside: avoid;
+  }
+
+  .toc ol li::before {
+    content: counter(list-item) ".";
+    color: var(--muted);
+    margin-right: 8px;
+  }
+
+  section {
+    margin-top: 56px;
+    scroll-margin-top: 24px;
+  }
+
+  h2 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 18px;
+  }
+
+  h3 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    color: var(--text);
+    margin: 28px 0 8px;
+  }
+
+  p, li {
+    color: var(--text);
+  }
+
+  p {
+    margin: 0 0 14px;
+  }
+
+  ol, ul {
+    padding-left: 22px;
+    margin: 0 0 14px;
+  }
+
+  ol li, ul li {
+    margin-bottom: 10px;
+  }
+
+  a {
+    color: var(--amber);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 120ms;
+  }
+
+  a:hover { border-bottom-color: var(--amber); }
+
+  strong { color: var(--text); font-weight: 800; }
+  em { font-style: italic; color: var(--muted); }
+
+  .reference {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 18px 20px;
+    border-top: 1px solid var(--rule);
+    padding: 16px 0;
+  }
+
+  .reference + .reference { border-top: 1px solid var(--rule); }
+
+  .reference:last-of-type { border-bottom: 1px solid var(--rule); }
+
+  .reference .control {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+
+  .reference .control small {
+    display: block;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+
+  .reference .desc {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.55;
+  }
+
+  .reference .desc p {
+    margin: 0 0 8px;
+  }
+
+  .reference .desc p:last-child { margin: 0; }
+
+  .callout {
+    padding: 18px 20px;
+    background: rgba(255, 182, 39, 0.08);
+    border: 1px solid rgba(255, 182, 39, 0.25);
+    border-radius: 12px;
+    margin: 18px 0;
+  }
+
+  .callout p { margin: 0; }
+  .callout p + p { margin-top: 8px; }
+
+  .tip {
+    padding: 14px 16px;
+    background: rgba(240, 237, 229, 0.03);
+    border-left: 3px solid var(--amber);
+    border-radius: 4px;
+    margin: 16px 0;
+    font-size: 15px;
+    color: var(--text);
+  }
+
+  .tip strong { display: block; margin-bottom: 4px; color: var(--amber); font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; font-size: 11px; }
+
+  .kbd {
+    display: inline-block;
+    padding: 1px 7px;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    background: rgba(240, 237, 229, 0.05);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  footer {
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  @media (max-width: 560px) {
+    .wordmark { font-size: 56px; letter-spacing: -2.5px; }
+    .tagline { font-size: 19px; }
+    .reference { grid-template-columns: 1fr; gap: 6px; }
+    .reference .control { font-size: 12px; }
+    .toc ol { columns: 1; }
+  }
+</style>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1 class="wordmark">debriefed</h1>
+
+      <div class="tachometer" aria-hidden="true">
+        <div class="tick-row">
+          <span class="tick major r"></span>
+          <span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span>
+          <span class="tick major r"></span>
+          <span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span>
+          <span class="tick major r"></span>
+          <span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span>
+          <span class="tick major r"></span>
+          <span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span>
+          <span class="tick major r"></span>
+        </div>
+        <div class="tick-row">
+          <span class="tick major g"></span>
+          <span class="tick"></span><span class="tick"></span>
+          <span class="tick major g"></span>
+          <span class="tick"></span><span class="tick"></span>
+          <span class="tick major g"></span>
+          <span class="tick"></span><span class="tick"></span>
+          <span class="tick major g"></span>
+          <span class="tick"></span><span class="tick"></span>
+          <span class="tick major g"></span>
+        </div>
+        <div class="tick-row">
+          <span class="tick major b"></span>
+          <span class="tick"></span>
+          <span class="tick major b"></span>
+          <span class="tick"></span>
+          <span class="tick major b"></span>
+          <span class="tick"></span>
+          <span class="tick major b"></span>
+        </div>
+      </div>
+
+      <p class="tagline">every frame in reach,<br><span class="climax">every frame debriefed</span></p>
+    </header>
+
+    <nav class="toc" aria-label="Contents">
+      <p class="toc-title">Contents</p>
+      <ol>
+        <li><a href="#overview">What Debriefed does</a></li>
+        <li><a href="#start">Getting started</a></li>
+        <li><a href="#scrub">The scrub gesture</a></li>
+        <li><a href="#top-bar">Top bar reference</a></li>
+        <li><a href="#bottom-bar">Bottom bar reference</a></li>
+        <li><a href="#on-video">On-video gestures</a></li>
+        <li><a href="#ab">A / B loops</a></li>
+        <li><a href="#zoom">Zoom and pan</a></li>
+        <li><a href="#frame">Saving a frame</a></li>
+        <li><a href="#orientation">Orientation</a></li>
+        <li><a href="#haptics">Haptic feedback</a></li>
+        <li><a href="#tips">Tips &amp; troubleshooting</a></li>
+        <li><a href="#privacy">Privacy</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ol>
+    </nav>
+
+    <section id="overview">
+      <h2>1. What Debriefed does</h2>
+      <p>Debriefed is a variable-speed video scrubber for iPhone. You pick any clip from your Photos library, and then drag a single finger across the video to move through it — <strong>horizontal</strong> movement seeks through time, <strong>vertical</strong> position on the screen sets the speed. High up gives you fine, one-twentieth-speed control for landing on an exact frame. Low down lets you rip across a long clip at 3× real time.</p>
+      <p>The mental model is a variable-speed jog wheel from a professional video deck: you're always in direct, continuous control, and you get to decide how coarse or fine that control is moment to moment.</p>
+      <p>It was built for coaching debriefs — wind-tunnel skydiving, sports technique review, music practice, film study. Anyone who needs to pore over footage frame by frame will find it useful.</p>
+    </section>
+
+    <section id="start">
+      <h2>2. Getting started</h2>
+      <ol>
+        <li>Open Debriefed. Tap <strong>Choose a video</strong>. iOS will ask for permission to read your Photos library — this is required for the picker to show you anything. Grant it.</li>
+        <li>Pick any video. It loads straight into the player.</li>
+        <li>Drag your finger across the video to scrub. Try a slow drag near the top of the screen, then the same drag near the bottom, to feel how vertical position changes your speed.</li>
+        <li>Tap the video once to show the control bars. Tap again to hide them.</li>
+        <li>To save a frame: scrub to the moment you want, show the controls, and tap the camera icon. iOS will ask once for permission to add to Photos; grant it, and the JPEG lands in your Photos library.</li>
+      </ol>
+      <div class="callout">
+        <p><strong>That's the whole app.</strong> Every other feature — A/B loops, zoom, rate change, frame-stepping — is optional polish on top of the core scrub gesture. You can ignore them entirely and still get what the app is built to do.</p>
+      </div>
+    </section>
+
+    <section id="scrub">
+      <h2>3. The scrub gesture</h2>
+      <p>The scrub gesture is the thing Debriefed exists for, so it's worth understanding in detail.</p>
+      <p>While your finger is down on the video, two things are tracked:</p>
+      <ul>
+        <li><strong>Horizontal travel.</strong> Every pixel your finger moves left or right translates into a seek through the clip.</li>
+        <li><strong>Vertical position.</strong> The Y coordinate of your finger — where it currently is on the screen — sets the speed multiplier, ranging from <strong>0.05×</strong> at the top of the video (twenty times finer than real time, for picking an exact frame) to <strong>3×</strong> at the bottom (for fast overview). The mapping is exponential rather than linear, so the top half of the screen covers the precision range (0.05× → ~0.4×) and the bottom half covers the fast range (~0.4× → 3×) — each feels equally "wide" under your finger.</li>
+      </ul>
+      <p>The key thing to notice: you can change speed mid-gesture without lifting your finger. Start fast at the bottom to land somewhere in the ballpark, then slide your finger up the screen to slow down and pick the exact frame. It's one continuous motion.</p>
+      <div class="tip">
+        <strong>Tip</strong>
+        A compact HUD appears at the top of the video while you scrub, showing the current speed multiplier, the elapsed time, and an amber progress fill. Any A/B markers you've set are drawn on the progress track as small green tabs.
+      </div>
+      <p>The gesture area is clipped to the video rectangle. The black letterbox bands above and below (in portrait) or left and right (in landscape) are where the controls live, and dragging there won't accidentally start a scrub.</p>
+    </section>
+
+    <section id="top-bar">
+      <h2>4. Top bar reference</h2>
+      <p>In portrait, the top bar sits in the black band above the video. In landscape, it collapses into the left-hand margin. Tap the video once to show or hide it.</p>
+
+      <div class="reference">
+        <div class="control">Close<small>× icon, top left</small></div>
+        <div class="desc"><p>Returns to the home screen. Your zoom, loop markers, and pick reset — the next video starts fresh.</p></div>
+      </div>
+
+      <div class="reference">
+        <div class="control">Time<small>0:00 / 0:00, centre</small></div>
+        <div class="desc"><p>Current playback time followed by total duration. Updates live during playback and scrubbing.</p></div>
+      </div>
+
+      <div class="reference">
+        <div class="control">A marker<small>A chip</small></div>
+        <div class="desc"><p>Tap to mark the <strong>start</strong> of a loop at the current time. The chip turns amber when set, and a green tab appears on the progress track.</p><p>Long-press to clear. If B is also unset, clearing A turns the loop off.</p></div>
+      </div>
+
+      <div class="reference">
+        <div class="control">B marker<small>B chip</small></div>
+        <div class="desc"><p>Same as A, but marks the <strong>end</strong> of the loop.</p></div>
+      </div>
+
+      <div class="reference">
+        <div class="control">Loop toggle<small>⟲ icon</small></div>
+        <div class="desc"><p>Enabled only once both A and B are set. Tap to turn looping on or off. When on, playback jumps back to A whenever it passes B.</p></div>
+      </div>
+    </section>
+
+    <section id="bottom-bar">
+      <h2>5. Bottom bar reference</h2>
+      <p>In portrait, the bottom bar runs full-width across the black band below the video. In landscape, it stacks into the right-hand margin.</p>
+
+      <div class="reference">
+        <div class="control">Jump to start<small>⏮ icon</small></div>
+        <div class="desc"><p>Seeks instantly to 0:00.</p></div>
+      </div>
+
+      <div class="reference">
+        <div class="control">Frame back<small>◁ icon</small></div>
+        <div class="desc"><p>Steps back by exactly one frame, using the clip's own frame rate. If the video doesn't report a rate, it falls back to 1/30 second.</p></div>
+      </div>
+
+      <div class="reference">
+        <div class="control">Play / pause<small>▶ / ❚❚ icon, centre</small></div>
+        <div class="desc"><p>Toggles playback at the current rate.</p></div>
+      </div>
+
+      <div class="reference">
+        <div class="control">Frame forward<small>▷ icon</small></div>
+        <div class="desc"><p>Mirror of frame-back: one frame forward.</p></div>
+      </div>
+
+      <div class="reference">
+        <div class="control">Jump to end<small>⏭ icon</small></div>
+        <div class="desc"><p>Seeks to the final frame of the clip.</p></div>
+      </div>
+
+      <div class="reference">
+        <div class="control">Save frame<small>camera icon</small></div>
+        <div class="desc"><p>Captures the current frame as a full-resolution JPEG and writes it to your Photos library. A brief confirmation appears on success.</p></div>
+      </div>
+
+      <div class="reference">
+        <div class="control">Playback rate<small>rate chip, e.g. 1×</small></div>
+        <div class="desc"><p>Tap to cycle through 0.25×, 0.5×, 1×, 1.5×, 2×, 2.5×, 3×, 3.5×, 4×. Takes effect immediately for live playback; scrubbing speed is separate and set by your finger position.</p></div>
+      </div>
+    </section>
+
+    <section id="on-video">
+      <h2>6. On-video gestures</h2>
+      <p>These work directly on the video rectangle, with the controls showing or hidden.</p>
+
+      <div class="reference">
+        <div class="control">One-finger drag</div>
+        <div class="desc"><p>Scrub (see <a href="#scrub">section 3</a>).</p></div>
+      </div>
+
+      <div class="reference">
+        <div class="control">Single tap</div>
+        <div class="desc"><p>Show or hide the control bars. Controls fade out on their own after a few seconds of inactivity.</p></div>
+      </div>
+
+      <div class="reference">
+        <div class="control">Double-tap, left half</div>
+        <div class="desc"><p>Skip back five seconds. A quick "−5" indicator flashes on the left side.</p></div>
+      </div>
+
+      <div class="reference">
+        <div class="control">Double-tap, right half</div>
+        <div class="desc"><p>Skip forward five seconds, mirror of the above.</p></div>
+      </div>
+
+      <div class="reference">
+        <div class="control">Two-finger pinch</div>
+        <div class="desc"><p>Zoom from 1× to 5×, anchored to the point between your fingers at the instant you started pinching.</p></div>
+      </div>
+
+      <div class="reference">
+        <div class="control">Two-finger drag</div>
+        <div class="desc"><p>While zoomed, pan the video around. Has no effect at 1×.</p></div>
+      </div>
+    </section>
+
+    <section id="ab">
+      <h2>7. A / B loops</h2>
+      <p>A/B looping lets you replay a specific span of the clip over and over — useful for drilling a single move or comparing across several takes.</p>
+      <ol>
+        <li>Scrub to the start of the span. Tap <strong>A</strong>.</li>
+        <li>Scrub to the end. Tap <strong>B</strong>.</li>
+        <li>Tap the loop icon to enable looping, then press play.</li>
+      </ol>
+      <p>Playback will jump back to A each time it passes B. You can move a marker by tapping it again at a new time. Long-press a marker to clear it.</p>
+    </section>
+
+    <section id="zoom">
+      <h2>8. Zoom and pan</h2>
+      <p>Pinch outward on the video to zoom in (up to 5×), pinch inward to zoom back out. The zoom anchors on the midpoint between your two fingers at the moment the pinch began, so the content you targeted stays under your fingers as they spread.</p>
+      <p>Once zoomed, a two-finger drag moves the video within the frame — useful for zeroing in on a specific performer, hand position, or piece of equipment.</p>
+      <p>If you pinch below about 1.1×, the view snaps back to 1× and recentres automatically.</p>
+      <div class="tip">
+        <strong>Tip</strong>
+        Scrubbing still works while zoomed. Your one-finger drag reads speed from vertical position exactly as before — so you can pick a fine frame inside a zoomed region with the same gesture.
+      </div>
+    </section>
+
+    <section id="frame">
+      <h2>9. Saving a frame</h2>
+      <p>Scrub to the frame you want, show the controls (tap the video once if they're hidden), and tap the camera icon. Debriefed writes a full-resolution JPEG of exactly that frame into your Photos library.</p>
+      <p>The first time you tap the camera, iOS will prompt for <em>Add Photos</em> permission — this is distinct from the read permission it asked for earlier when you picked the video, and it grants only the ability to <em>add</em> photos, not to read any others. Once granted, subsequent saves are silent.</p>
+      <p>Frames are saved at the video's native resolution, including 4K, with HDR metadata preserved where present.</p>
+    </section>
+
+    <section id="orientation">
+      <h2>10. Orientation</h2>
+      <p>The home screen is always portrait.</p>
+      <p>Inside the player, Debriefed locks the device orientation to match the video: <strong>landscape</strong> clips are played in landscape and <strong>portrait</strong> clips in portrait. You don't need to do anything — when a clip loads, the app rotates the phone to fit, and stays there for the duration of playback.</p>
+      <p>This keeps the video filling as much of the screen as possible and puts the control bars where they belong (above/below in portrait, left/right in landscape) without you having to fight the device's auto-rotate.</p>
+    </section>
+
+    <section id="haptics">
+      <h2>11. Haptic feedback</h2>
+      <p>Debriefed uses the Taptic Engine to make the interface feel physical rather than visual. You'll feel:</p>
+      <ul>
+        <li>A soft tick when a scrub starts, when it reverses direction, and whenever you tap a button or chip.</li>
+        <li>A firmer thud when your scrub hits the start or end of the clip.</li>
+        <li>A light selection tick when a frame save succeeds and when the playback rate changes.</li>
+      </ul>
+      <p>Haptics are iPhone-only and will be silent on iPad or in the iOS Simulator.</p>
+    </section>
+
+    <section id="tips">
+      <h2>12. Tips &amp; troubleshooting</h2>
+
+      <h3>Why is scrubbing faster near the bottom of the screen?</h3>
+      <p>By design. Vertical position controls speed. High up = fine, low down = fast. This is the same metaphor as a variable-speed jog wheel on a professional video deck — you're not choosing "slow mode" or "fast mode" ahead of time, you're modulating it continuously with where your finger is.</p>
+
+      <h3>A clip looks slightly washed out</h3>
+      <p>You're likely looking at an HDR clip on the iOS Simulator, which doesn't render HDR colour correctly. On a real iPhone it'll look right.</p>
+
+      <h3>My video won't play</h3>
+      <p>Debriefed can decode anything iOS natively supports — MP4 (H.264 / H.265), MOV, HEVC. If a clip plays in the stock Photos app, it'll play here. If it doesn't play in Photos either, the file is likely corrupt or uses an unsupported codec.</p>
+
+      <h3>Does it remember the last video I watched?</h3>
+      <p>No. Every session starts from the home screen where you pick a clip. An earlier beta had a Resume feature but iOS's Photos sandboxing made it unreliable — it worked most of the time and silently failed the rest. Picking again is one tap, and we'd rather have a feature that's always right than one that mostly works.</p>
+
+      <h3>Can I trim a clip in Debriefed?</h3>
+      <p>Not in this version. Trim is on the roadmap but requires a custom native module (iOS has no high-level API that covers it well), which is a larger piece of work than the scrubber itself. In the meantime, the Photos app handles trimming, and Debriefed can pick up the trimmed output.</p>
+
+      <h3>It feels slightly laggy when I scrub backward fast</h3>
+      <p>Some codecs — particularly H.265 / HEVC — are heavily dependent on forward decode order, which makes backward seeks expensive. Debriefed rate-limits its seek calls to avoid piling up decoder work; the feel should be smooth on most devices and clips. If it's noticeably slow, try a short H.264 clip to confirm it's codec-specific and let me know.</p>
+    </section>
+
+    <section id="privacy">
+      <h2>13. Privacy</h2>
+      <div class="callout">
+        <p>Debriefed has no accounts, no ads, no analytics, no tracking, and no network connections once installed. Your videos never leave your device.</p>
+        <p>See the full <a href="privacy.html">privacy policy</a>.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>14. Contact</h2>
+      <p>For support, bug reports, or feature requests, email <a href="mailto:david.haygarth@gmail.com">david.haygarth@gmail.com</a>.</p>
+    </section>
+
+    <footer>
+      <span>Debriefed · v1.0</span>
+      <span>© 2026 David Haygarth</span>
+    </footer>
+  </main>
+</body>
+</html>
