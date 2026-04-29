@@ -351,6 +351,7 @@
         <li><a href="#frame">Saving a frame</a></li>
         <li><a href="#orientation">Orientation</a></li>
         <li><a href="#haptics">Haptic feedback</a></li>
+        <li><a href="#settings">Settings</a></li>
         <li><a href="#tips">Tips &amp; troubleshooting</a></li>
         <li><a href="#privacy">Privacy</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -392,6 +393,7 @@
         A compact HUD appears at the top of the video while you scrub, showing the current speed multiplier, the elapsed time, and an amber progress fill. Any A/B markers you've set are drawn on the progress track as small green tabs.
       </div>
       <p>The gesture area is clipped to the video rectangle. The black letterbox bands above and below (in portrait) or left and right (in landscape) are where the controls live, and dragging there won't accidentally start a scrub.</p>
+      <p>If you'd rather drag right to go backward and drag left to go forward, the direction can be flipped in <a href="#settings">Settings</a>.</p>
     </section>
 
     <section id="top-bar">
@@ -480,12 +482,12 @@
 
       <div class="reference">
         <div class="control">Double-tap, left half</div>
-        <div class="desc"><p>Skip back five seconds. A quick "−5" indicator flashes on the left side.</p></div>
+        <div class="desc"><p>Skip back five seconds (or whichever distance is set in <a href="#settings">Settings</a>). A quick indicator flashes on the left side.</p></div>
       </div>
 
       <div class="reference">
         <div class="control">Double-tap, right half</div>
-        <div class="desc"><p>Skip forward five seconds, mirror of the above.</p></div>
+        <div class="desc"><p>Skip forward by the same distance, mirror of the above.</p></div>
       </div>
 
       <div class="reference">
@@ -543,11 +545,34 @@
         <li>A firmer thud when your scrub hits the start or end of the clip.</li>
         <li>A light selection tick when a frame save succeeds and when the playback rate changes.</li>
       </ul>
-      <p>Haptics are iPhone-only and will be silent on iPad or in the iOS Simulator.</p>
+      <p>Haptics are iPhone-only and will be silent on iPad or in the iOS Simulator. The overall intensity (off, light, medium, firm) can be adjusted in <a href="#settings">Settings</a>.</p>
+    </section>
+
+    <section id="settings">
+      <h2>12. Settings</h2>
+      <p>Tap the small gear icon in the top-right of the home screen to open Settings. Your choices are saved automatically and persist across app launches.</p>
+
+      <h3>Reverse direction</h3>
+      <p>By default, dragging your finger to the <strong>right</strong> moves the clip <strong>forward</strong> in time. Some users — particularly those used to a traditional film-editing jog wheel — prefer the opposite. Turn this on to flip the mapping: drag right scrubs backward, drag left scrubs forward. The vertical speed control is unaffected.</p>
+
+      <h3>Haptics</h3>
+      <p>Choose between four levels:</p>
+      <ul>
+        <li><strong>Off</strong> — no Taptic Engine feedback at all.</li>
+        <li><strong>Light</strong> — every interaction uses a quiet selection tick. Bound bumps and frame saves don't punch any harder than a button tap.</li>
+        <li><strong>Medium</strong> — the default. Scrub ticks stay quiet; impacts (frame skip, hitting the start or end of a clip) feel noticeably firmer.</li>
+        <li><strong>Firm</strong> — selection ticks become a soft impact, and impacts become a heavy thud. Best for users who want unmissable feedback.</li>
+      </ul>
+
+      <h3>Auto-hide</h3>
+      <p>Sets how long the control bars stay visible after you tap the video. Options are 2, 3, 5, 10 seconds, or <strong>Never</strong> — the last is useful when you're studying a clip in detail and don't want the controls disappearing under your finger.</p>
+
+      <h3>Double-tap distance</h3>
+      <p>Sets the time jump for a double-tap on the left or right side of the video. Options are 3, 5, 10, or 15 seconds. Shorter values suit fast-paced sports footage; longer values suit lectures or interviews.</p>
     </section>
 
     <section id="tips">
-      <h2>12. Tips &amp; troubleshooting</h2>
+      <h2>13. Tips &amp; troubleshooting</h2>
 
       <h3>Why is scrubbing faster near the bottom of the screen?</h3>
       <p>By design. Vertical position controls speed. High up = fine, low down = fast. This is the same metaphor as a variable-speed jog wheel on a professional video deck — you're not choosing "slow mode" or "fast mode" ahead of time, you're modulating it continuously with where your finger is.</p>
@@ -569,7 +594,7 @@
     </section>
 
     <section id="privacy">
-      <h2>13. Privacy</h2>
+      <h2>14. Privacy</h2>
       <div class="callout">
         <p>Debriefed has no accounts, no ads, no analytics, no tracking, and no network connections once installed. Your videos never leave your device.</p>
         <p>See the full <a href="privacy.html">privacy policy</a>.</p>
@@ -577,7 +602,7 @@
     </section>
 
     <section id="contact">
-      <h2>14. Contact</h2>
+      <h2>15. Contact</h2>
       <p>For support, bug reports, or feature requests, email <a href="mailto:vistas.promo-7e@icloud.com">vistas.promo-7e@icloud.com</a>.</p>
     </section>
 
